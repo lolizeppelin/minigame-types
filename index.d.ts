@@ -645,96 +645,86 @@ export interface Tracker {
 
     /**
      * 重试接口
-     * @param user
-     * @param role
+     * @param payload
      * @constructor
      */
-    Retry(user?: User, role?: GameRole): void
+    Retry(payload: { user?: User, role?: GameRole }): void
 
     /**
      * 通用事件
-     * @param event
-     * @param params
+     * @param payload
      * @param callback
      */
-    PushEvent(event: string, params: Record<string, any>, callback: HandlerResult): void
+    PushEvent(payload: {
+        event: string;
+        params: Record<string, any>,
+    }, callback: HandlerResult): void
 
     /**
      * 用户创建追踪
-     * @param user
+     * @param payload
      * @param callback
      */
-    UserCreate(user: User, callback: HandlerResult): void
+    UserCreate(payload: { user: User }, callback: HandlerResult): void
 
     /**
      * 用户登录追踪
-     * @param user
+     * @param payload
      * @param callback
      */
-    UserLogin(user: User, callback: HandlerResult): void
+    UserLogin(payload: { user: User }, callback: HandlerResult): void
 
     /**
      * 用户登出追踪
-     * @param user
-     * @param role
+     * @param payload
      * @param callback
      */
-    UserLogout(user: User, role: GameRole | null, callback: HandlerResult): void
-
-    /**
-     * 角色登录追踪
-     * @param user
-     * @param role
-     * @param callback
-     */
-    RoleLogin(user: User, role: GameRole, callback: HandlerResult): void
+    UserLogout(payload: { user: User, role: GameRole | null }, callback: HandlerResult): void
 
     /**
      * 用户通用事件追踪
-     * @param event
-     * @param user
-     * @param params
+     * @param payload
      * @param callback
      */
-    UserEvent(event: string, user: User, params: Record<string, any>,
+    UserEvent(payload: { event: string, user: User, params: Record<string, any> },
               callback: HandlerResult): void
 
     /**
-     * 角色创建追踪
-     * @param user
-     * @param role
+     * 角色登录追踪
+     * @param payload
      * @param callback
      */
-    RoleCreate(user: User, role: GameRole, callback: HandlerResult): void
+    RoleLogin(payload: { user: User, role: GameRole }, callback: HandlerResult): void
+
+
+    /**
+     * 角色创建追踪
+     * @param payload
+     * @param callback
+     */
+    RoleCreate(payload: { user: User, role: GameRole }, callback: HandlerResult): void
 
     /**
      * 角色升级追踪
-     * @param user
-     * @param role     角色
-     * @param level    升级的等级(若用户角色中的level已经是升级后的等级,这里填0)
+     * @param payload
      * @param callback
      */
-    RoleUpLevel(user: User, role: GameRole, level: number, callback: HandlerResult): void
+    RoleUpLevel(payload: { user: User, role: GameRole, level: number }, callback: HandlerResult): void
 
     /**
      * 角色支付追踪
-     * @param user
-     * @param role
-     * @param order
+     * @param payload
      * @param callback
      */
-    RoleRecharged(user: User, role: GameRole, order: GameOrder,
+    RoleRecharged(payload: { user: User, role: GameRole, order: GameOrder },
                   callback: HandlerResult): void
 
     /**
      * 角色通用事件追踪
-     * @param event
-     * @param user
-     * @param role
-     * @param params
+     * @param payload
      * @param callback
      */
-    RoleEvent(event: string, user: User, role: GameRole, params: Record<string, any> | null,
+    RoleEvent(payload: { event: string, user: User, role: GameRole, params: Record<string, any> | null },
               callback: HandlerResult): void
 
 }
