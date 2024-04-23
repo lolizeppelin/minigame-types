@@ -10,8 +10,12 @@
   },
   "author": "lolizeppelin",
   "license": "MIT",
-  "tsd": {
-    "directory": "test"
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lolizeppelin/minigame-types"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.46.0",
