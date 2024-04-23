@@ -636,3 +636,89 @@ export interface HandlerResults {
 export interface Callback {
     (result?: any): void
 }
+
+
+/**
+ * 追踪器接口
+ */
+export interface Tracker {
+
+    /**
+     * 用户创建追踪
+     * @param user
+     * @param callback
+     */
+    UserCreate(user: User, callback: HandlerResults): void
+
+    /**
+     * 用户通用事件追踪
+     * @param event
+     * @param user
+     * @param params
+     * @param callback
+     */
+    UserEvent(event: string, user: User, params: Record<string, any>,
+              callback: HandlerResults): void
+
+    /**
+     * 用户登录追踪
+     * @param user
+     * @param callback
+     */
+    UserLogin(user: User, callback: HandlerResults): void
+
+    /**
+     * 用户登出追踪
+     * @param user
+     * @param role
+     * @param callback
+     */
+    UserLogout(user: User, role: GameRole | null, callback: HandlerResults): void
+
+    /**
+     * 角色登录追踪
+     * @param user
+     * @param role
+     * @param callback
+     */
+    RoleLogin(user: User, role: GameRole, callback: HandlerResults): void
+
+    /**
+     * 角色创建追踪
+     * @param user
+     * @param role
+     * @param callback
+     */
+    RoleCreate(user: User, role: GameRole, callback: HandlerResults): void
+
+    /**
+     * 角色升级追踪
+     * @param user
+     * @param role     角色
+     * @param level    升级的等级(若用户角色中的level已经是升级后的等级,这里填0)
+     * @param callback
+     */
+    RoleUpLevel(user: User, role: GameRole, level: number, callback: HandlerResults): void
+
+    /**
+     * 角色支付追踪
+     * @param user
+     * @param role
+     * @param order
+     * @param callback
+     */
+    RoleRecharged(user: User, role: GameRole, order: GameOrder,
+                  callback: HandlerResults): void
+
+    /**
+     * 角色通用事件追踪
+     * @param event
+     * @param user
+     * @param role
+     * @param params
+     * @param callback
+     */
+    RoleEvent(event: string, user: User, role: GameRole, params: Record<string, any>|null,
+              callback: HandlerResults): void
+
+}
