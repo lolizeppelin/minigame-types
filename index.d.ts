@@ -728,3 +728,49 @@ export interface Tracker {
               callback: HandlerResult): void
 
 }
+
+
+/**
+ * 通用 http请求结构
+ */
+export interface HttpRequest {
+    /**
+     * 请求的url
+     */
+    url: string;
+    /**
+     * 请求方法
+     */
+    method: 'POST' | 'GET' | 'PUT'
+    /**
+     * 请求头
+     */
+    headers?: Record<string, string>
+    /**
+     * 返回的数据类型
+     */
+    accept: 'json' | 'string'
+    /**
+     * 请求body
+     */
+    body: string | Record<string, any>;
+}
+
+
+/**
+ * 通用 http返回结构
+ */
+export interface HttpResponse {
+    /**
+     * http结果状态码
+     */
+    code: number
+    /**
+     * http请求结果的headers
+     */
+    headers?: Record<string, string>
+    /**
+     * http请求结果的返回数据
+     */
+    content: string | Record<string, any>;
+}
