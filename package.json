@@ -1,6 +1,6 @@
 {
   "name": "minigame-typings",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Type definitions for MiniGame in TypeScript",
   "main": "./index.d.ts",
   "types": "./index.d.ts",
@@ -11,7 +11,7 @@
   "author": "lolizeppelin",
   "license": "MIT",
   "publishConfig": {
-    "registry": "https://registry.npmjs.com/"
+    "registry": "http://10.20.0.6:7999/repository/npm-private/"
   },
   "repository": {
     "type": "git",

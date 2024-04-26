@@ -774,3 +774,13 @@ export interface HttpResponse {
      */
     content: string | Record<string, any>;
 }
+
+/**
+ * 通用http request handler
+ * @param req
+ * @param callback
+ * @constructor
+ */
+export interface HttpRequestHandler {
+    (req: HttpRequest, callback: HandlerResult): void
+}
