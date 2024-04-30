@@ -1,6 +1,6 @@
 {
   "name": "minigame-typings",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Type definitions for MiniGame in TypeScript",
   "main": "./index.d.ts",
   "types": "./index.d.ts",

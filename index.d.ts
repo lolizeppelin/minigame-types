@@ -784,3 +784,76 @@ export interface HttpResponse {
 export interface HttpRequestHandler {
     (req: HttpRequest, callback: HandlerResult): void
 }
+
+
+/**
+ * 微信激励托管
+ */
+
+export interface BaseBehaviorOperation {
+    /**
+     * 分享推荐值，必填，当strategy = 0时，填充0
+     */
+    shareValue: number;
+    /**
+     * 激励广告推荐值，必填，当strategy = 0时，填充0
+     */
+    rewardValue: number;
+    /**
+     * ⽤户产生的付费⾦额，只要发生付费，都需要回传，用于优化分享价值预估。选填，该字段要求基础库版本在2.24.7及以上
+     */
+    depositAmount?: number;
+}
+
+/**
+ * 点击拉起
+ */
+export interface OperationBehaviorClick extends BaseBehaviorOperation {
+    /**
+     * 1-曝光 2-点击 3-关闭 4-操作成功 5-操作失败
+     */
+    operation: 1 | 2 | 3 | 4 | 5;
+    /**
+     * 0-广告 1-分享
+     */
+    currentShow: 0 | 1;
+    /**
+     * 0-业务 1-微信策略
+     */
+    strategy: 0 | 1;
+    /**
+     * 当前点位的adunit
+     */
+    adunit: string;
+    /**
+     * 当前点位的sceneID
+     */
+    sceneID: string;
+}
+
+/**
+ * 分享拉起
+ */
+export interface OperationBehaviorShare extends BaseBehaviorOperation {
+    /**
+     * 6-分享
+     */
+    operation: 6;
+    /**
+     * 分享人的openid
+     */
+    inviteUser: string;
+    /**
+     * 分享的广告单元
+     */
+    adunit: string;
+    /**
+     * 当前点位的sceneID(开发者自定义）
+     */
+    sceneID: string;
+}
+
+/**
+ * 微信激励托管参数
+ */
+export type VideoOperation = OperationBehaviorShare | OperationBehaviorClick;
