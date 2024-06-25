@@ -506,9 +506,9 @@ export interface GameProduct {
  */
 export interface GameOrder {
     /**
-     * 游戏端订单id
+     * 游戏端订单流水号
      */
-    sn: string;     // 游戏端订单
+    sn: string;
     /**
      * 游戏角色
      */
@@ -530,6 +530,37 @@ export interface GameOrder {
      */
     extension?: Record<string, any>;
 }
+
+/**
+ * 付款信息
+ */
+export interface Payment {
+    /**
+     * 支付订单流水号(sdk支付订单id)
+     */
+    sn: string
+    /**
+     * 外部订单id
+     */
+    tid: string;
+    /**
+     * 支付金额
+     */
+    money: string;
+    /**
+     * 支付方式
+     */
+    mode: string;
+    /**
+     * 国家货币代码(默认CNY)
+     */
+    code?: string;
+    /**
+     * 载荷
+     */
+    payload?: any;
+}
+
 
 /**
  * 用户分享信息
