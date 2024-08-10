@@ -173,6 +173,119 @@ export interface Firmware {
 }
 
 /**
+ * 硬件信息
+ */
+export interface Hardware {
+    /**
+     * 设备类型(平板/手机/电脑/笔记本/随身设备)
+     */
+    device: "Tablet" | "Phone" | "PC" | "NB" | "WB" | "Unknown";
+    /**
+     * 固件版本
+     */
+    version: string;
+    /**
+     * 设备别名
+     * "iphone" | "ipad" | "pad" | "pc" | "notebook" | "watch";
+     */
+    alais?: string;
+    brand?: string;
+    model?: string;
+}
+
+/**
+ * 广告联盟ID
+ */
+export interface CAID {
+    /**
+     * caid
+     */
+    caid: string;
+    /**
+     * caid版本
+     */
+    version: string;
+}
+
+/**
+ * Identifies 身份时标
+ */
+export interface Identifies {
+    /**
+     * 开放id
+     */
+    openid?: string;
+    /**
+     * md5(ip + ua)
+     */
+    ipua?: string;
+    /**
+     * IOS广告标示符
+     */
+    idfa?: string;
+    /**
+     * IOS基于供应商界别的识标ID
+     */
+    idfv?: string;
+    /**
+     * IOS设备的唯一识别码
+     */
+    udid?: string;
+    /**
+     * 国际移动设备识别码
+     */
+    imei?: string;
+    /**
+     * Android设备ID(android_id)
+     */
+    aid?: string;
+    /**
+     * Android开放广告ID
+     */
+    oaid?: string;
+    /**
+     * 物理地址
+     */
+    mac?: string;
+    /**
+     * 广告联盟时标
+     */
+    caid?: CAID[];
+    /**
+     * 其他唯一主键
+     */
+    uniques?: Record<string, string>;
+}
+
+
+/**
+ * 模板
+ */
+export interface Template {
+    /**
+     * 模板ID
+     */
+    id: string;
+    /**
+     * 模板名称
+     */
+    name: string;
+    /**
+     * 模板格式
+     */
+    format: "string" | "html" | "json";
+    /**
+     * 正文是否压缩(zip后base64)
+     */
+    compressed?: boolean;
+    /**
+     * 模板正文
+     */
+    content: string;
+}
+
+
+/**
  * 服务端点
  */
 export interface Endpoint {
@@ -758,6 +871,31 @@ export interface Tracker {
     RoleEvent(payload: { event: string, user: User, role: GameRole, params: Record<string, any> | null },
               callback: HandlerResult): void
 
+}
+
+
+/**
+ * 插件
+ */
+export interface Plugin {
+    /**
+     * 插件初始化
+     * @param application
+     * @param storage
+     * @constructor
+     */
+    Init(application: Application, storage: CacheStorage): void
+    /**
+     * Sdk 初始化后调用
+     * @constructor
+     */
+    AfterInitialize(): void
+    /**
+     * 登录完成后调用
+     * @param user
+     * @constructor
+     */
+    AfterLogin(user: User): void
 }
 
 
