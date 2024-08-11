@@ -885,17 +885,35 @@ export interface Plugin {
      * @constructor
      */
     Init(application: Application, storage: CacheStorage): void
+
     /**
      * Sdk 初始化后调用
      * @constructor
      */
     AfterInitialize(): void
+
     /**
      * 登录完成后调用
      * @param user
      * @constructor
      */
     AfterLogin(user: User): void
+}
+
+
+/**
+ * 用于判断sdk支持插件
+ */
+export interface PluginAble {
+    /**
+     * 注册追踪器
+     */
+    RegTracker(name: string, tracker: Tracker): void;
+
+    /**
+     * 注册Hook
+     */
+    RegHook(name: string, callback: HandlerResult): void;
 }
 
 
