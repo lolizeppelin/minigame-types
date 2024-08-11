@@ -890,7 +890,7 @@ export interface Plugin {
      * Sdk 初始化后调用
      * @constructor
      */
-    AfterInitialize(): void
+    AfterInitialize(results: Results): void
 
     /**
      * 登录完成后调用
@@ -914,6 +914,25 @@ export interface PluginAble {
      * 注册Hook
      */
     RegHook(name: string, callback: HandlerResult): void;
+}
+
+
+/**
+ * 加载管理器
+ */
+export interface LoaderManager {
+    /**
+     * 加载配置
+     * @constructor
+     */
+    Application(): Application
+
+    /**
+     * 加载插件
+     * @param sdk
+     * @constructor
+     */
+    LoadPlugins(sdk: PluginAble): Plugin[]
 }
 
 
