@@ -286,6 +286,29 @@ export interface Template {
 
 
 /**
+ * 模板
+ */
+export interface PluginConfig {
+    /**
+     * 插件名
+     */
+    name: string;
+    /**
+     * 插件适配平台
+     */
+    platform: string;
+    /**
+     * 唯一主键
+     */
+    uniques?: Record<string, string>;
+    /**
+     * 额外参数
+     */
+    options?: Record<string, any>;
+}
+
+
+/**
  * 服务端点
  */
 export interface Endpoint {
@@ -880,22 +903,19 @@ export interface Tracker {
 export interface Plugin {
     /**
      * 插件初始化
-     * @param application
-     * @param storage
-     * @constructor
+     * @param config
+     * @param sdk
      */
-    Init(application: Application, storage: CacheStorage): void
+    new(config: PluginConfig, sdk: PluginAble): Plugin
 
     /**
      * Sdk 初始化后调用
-     * @constructor
      */
     AfterInitialize(results: Results): void
 
     /**
      * 登录完成后调用
      * @param user
-     * @constructor
      */
     AfterLogin(user: User): void
 }
@@ -905,6 +925,16 @@ export interface Plugin {
  * 用于判断sdk支持插件
  */
 export interface PluginAble {
+    /**
+     * 应用
+     */
+    application: Application;
+
+    /**
+     * 存储
+     */
+    storage: CacheStorage
+
     /**
      * 注册追踪器
      */
@@ -921,18 +951,13 @@ export interface PluginAble {
  * 加载管理器
  */
 export interface LoaderManager {
-    /**
-     * 加载配置
-     * @constructor
-     */
-    Application(): Application
 
     /**
      * 加载插件
+     * @param config
      * @param sdk
-     * @constructor
      */
-    LoadPlugins(sdk: PluginAble): Plugin[]
+    LoadPlugins(config: PluginConfig[], sdk: PluginAble): Plugin[]
 }
 
 
