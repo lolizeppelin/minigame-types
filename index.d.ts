@@ -38,9 +38,21 @@ export interface SystemInfo {
  * 插件信息
  */
 export interface PluginInfo {
-    id: string;
-    version: string;
+    /**
+     * 插件名
+     */
     name: string;
+    /**
+     * 插件适配平台
+     */
+    platform: string;
+    /**
+     * 唯一主键
+     */
+    uniques?: Record<string, string>;
+    /**
+     * 额外参数
+     */
     options?: Record<string, any>;
 }
 
@@ -282,29 +294,6 @@ export interface Template {
      * 模板正文
      */
     content: string;
-}
-
-
-/**
- * 模板
- */
-export interface PluginConfig {
-    /**
-     * 插件名
-     */
-    name: string;
-    /**
-     * 插件适配平台
-     */
-    platform: string;
-    /**
-     * 唯一主键
-     */
-    uniques?: Record<string, string>;
-    /**
-     * 额外参数
-     */
-    options?: Record<string, any>;
 }
 
 
@@ -906,7 +895,7 @@ export interface Plugin {
      * @param config
      * @param sdk
      */
-    new(config: PluginConfig, sdk: PluginAble): Plugin
+    new(config: PluginInfo, sdk: PluginAble): Plugin
 
     /**
      * Sdk 初始化后调用
@@ -957,7 +946,7 @@ export interface LoaderManager {
      * @param config
      * @param sdk
      */
-    LoadPlugins(config: PluginConfig[], sdk: PluginAble): Plugin[]
+    LoadPlugins(config: PluginInfo[], sdk: PluginAble): Plugin[]
 }
 
 
