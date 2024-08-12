@@ -943,10 +943,10 @@ export interface LoaderManager {
 
     /**
      * 加载插件
-     * @param config
+     * @param configs
      * @param sdk
      */
-    LoadPlugins(config: PluginInfo[], sdk: PluginAble): Plugin[]
+    LoadPlugins(configs: PluginInfo[], sdk: PluginAble): Plugin[]
 }
 
 
