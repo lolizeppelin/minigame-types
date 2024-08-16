@@ -940,7 +940,7 @@ export interface Plugin {
  * 插件类类
  */
 export interface PluginConstructor {
-    new(configs: PluginInfo[], sdk: PluginAbleSDK): Plugin
+    new(config: PluginInfo, sdk: PluginAbleSDK): Plugin
 }
 
 
