@@ -887,33 +887,9 @@ export interface Tracker {
 
 
 /**
- * 插件
- */
-export interface Plugin {
-    /**
-     * 插件初始化
-     * @param config
-     * @param sdk
-     */
-    new(config: PluginInfo, sdk: PluginAble): Plugin
-
-    /**
-     * Sdk 初始化后调用
-     */
-    AfterInitialize(results: Results): void
-
-    /**
-     * 登录完成后调用
-     * @param user
-     */
-    AfterLogin(user: User): void
-}
-
-
-/**
  * 用于判断sdk支持插件
  */
-export interface PluginAble {
+export interface PluginAbleSDK {
     /**
      * 应用
      */
@@ -937,16 +913,34 @@ export interface PluginAble {
 
 
 /**
- * 加载管理器
+ * 插件
  */
-export interface LoaderManager {
-
+export interface Plugin {
     /**
-     * 加载插件
-     * @param configs
+     * 插件初始化
+     * @param config
      * @param sdk
      */
-    LoadPlugins(configs: PluginInfo[], sdk: PluginAble): Plugin[]
+    new(config: PluginInfo, sdk: PluginAbleSDK): Plugin
+
+    /**
+     * Sdk 初始化后调用
+     */
+    AfterInitialize(results: Results): void
+
+    /**
+     * 登录完成后调用
+     * @param user
+     */
+    AfterLogin(user: User): void
+}
+
+
+/**
+ * 插件类类
+ */
+export interface PluginConstructor {
+    new(configs: PluginInfo[], sdk: PluginAbleSDK): Plugin
 }
 
 
