@@ -366,6 +366,34 @@ export interface Endpoint {
 
 
 /**
+ * 支付配置
+ */
+export interface PaymentInfo {
+    /**
+     * 支付方式优先级
+     */
+    priority: number;
+    /**
+     * 支付方式已禁用
+     */
+    disabled: boolean;
+    /**
+     * 数量值
+     */
+    quantities?: Record<string, number>;
+    /**
+     * 支付唯一值
+     */
+    uniques?: Record<string, string>
+    /**
+     * 支付参数
+     */
+    options?: Record<string, any>
+}
+
+
+
+/**
  * 应用信息
  */
 export interface ApplicationInfo {
@@ -404,7 +432,7 @@ export interface ApplicationInfo {
     /**
      * 支付信息
      */
-    payments?: Record<string, boolean>
+    payments?: Record<string, PaymentInfo>
     /**
      * 插件
      */
