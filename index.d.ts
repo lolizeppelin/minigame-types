@@ -374,6 +374,10 @@ export interface ApplicationInfo {
      */
     id: string;
     /**
+     * 前端公钥
+     */
+    publicKey: string;
+    /**
      * 应用名
      */
     name: string;
