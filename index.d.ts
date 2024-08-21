@@ -392,7 +392,7 @@ export interface ApplicationInfo {
     /**
      * 服务端点
      */
-    endpoints: Record<string, Endpoint>
+    endpoints: Record<string, Endpoint[]>
     /**
      * 应用环境变量(参数)
      */
