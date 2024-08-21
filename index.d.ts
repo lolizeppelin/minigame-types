@@ -43,9 +43,9 @@ export interface PluginInfo {
      */
     name: string;
     /**
-     * 插件适配平台
+     * 插件是否禁用
      */
-    platform: string;
+    disabled: boolean;
     /**
      * 唯一主键
      */
@@ -123,6 +123,43 @@ export interface Platform {
      */
     extension?: Record<string, any>;
 }
+
+/**
+ * 应用平台信息
+ */
+export interface PlatformInfo {
+    /**
+     * 平台识别id  e.g  wx1000451 / com.app.name
+     */
+    id: string;
+    /**
+     * 平台唯一值
+     */
+    uniques?: Record<string, string>
+    /**
+     * 平台参数
+     */
+    options?: Record<string, any>
+}
+
+/**
+ * 应用渠道信息
+ */
+export interface ChannelInfo {
+    /**
+     * 渠道识别name
+     */
+    name: string;
+    /**
+     * 渠道唯一值
+     */
+    uniques?: Record<string, string>
+    /**
+     * 渠道参数
+     */
+    options?: Record<string, any>
+}
+
 
 /**
  * 固件信息
@@ -316,7 +353,7 @@ export interface Endpoint {
     /**
      * 支持的最大版本
      */
-    max: VersionInfo;
+    max?: VersionInfo;
     /**
      * 端点地址
      */
@@ -326,6 +363,54 @@ export interface Endpoint {
      */
     status: 'CURRENT' | 'DEPRECATED';
 }
+
+
+/**
+ * 应用信息
+ */
+export interface ApplicationInfo {
+    /**
+     * 应用id
+     */
+    id: string;
+    /**
+     * 应用名
+     */
+    name: string;
+    /**
+     * 平台信息
+     */
+    platform: PlatformInfo;
+    /**
+     * 渠道信息
+     */
+    channel: ChannelInfo;
+    /**
+     * 服务端点
+     */
+    endpoints: Record<string, Endpoint>
+    /**
+     * 应用环境变量(参数)
+     */
+    environ: Record<string, string>
+    /**
+     * 应用控制开关
+     */
+    switch?: Record<string, boolean>
+    /**
+     * 支付信息
+     */
+    payments?: Record<string, boolean>
+    /**
+     * 插件
+     */
+    plugins?: PluginInfo[];
+    /**
+     * 模板列表
+     */
+    templates?: Template[];
+}
+
 
 /**
  * 应用信息
@@ -360,6 +445,7 @@ export interface AppInfo {
      */
     extension?: Record<string, any>
 }
+
 
 /**
  * SDK应用信息
