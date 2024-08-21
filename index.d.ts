@@ -979,7 +979,7 @@ export interface PluginAbleSDK {
     /**
      * 应用
      */
-    application: Application;
+    app: ApplicationInfo;
 
     /**
      * 存储
