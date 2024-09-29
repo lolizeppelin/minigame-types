@@ -1034,12 +1034,6 @@ export interface PluginAbleSDK {
  * 插件
  */
 export interface Plugin {
-    /**
-     * 插件初始化
-     * @param config
-     * @param sdk
-     */
-    new(config: PluginInfo, sdk: PluginAbleSDK): Plugin
 
     /**
      * Sdk 初始化后调用
@@ -1057,7 +1051,7 @@ export interface Plugin {
 /**
  * 插件类类
  */
-export interface PluginConstructor {
+export interface PluginLoder {
     new(config: PluginInfo, sdk: PluginAbleSDK): Plugin
 }
 
