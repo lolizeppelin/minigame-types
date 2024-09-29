@@ -441,6 +441,23 @@ export interface ApplicationInfo {
      * 模板列表
      */
     templates?: Template[];
+    /**
+     * 游戏引擎信息
+     */
+    engine?: {
+        /**
+         * 引擎名
+         */
+        name: string;
+        /**
+         * 引擎版本
+         */
+        version: string,
+        /**
+         * 引擎模块
+         */
+        module?: any
+    }
 }
 
 
