@@ -434,7 +434,7 @@ export interface ApplicationInfo {
      */
     payments?: Record<string, PaymentInfo>
     /**
-     * 插件
+     * 插件配置
      */
     plugins?: PluginInfo[];
     /**
@@ -457,6 +457,10 @@ export interface ApplicationInfo {
          * 引擎模块
          */
         module?: any
+        /**
+         * 额外参数
+         */
+        options?: Record<string, any>
     }
 }
 
