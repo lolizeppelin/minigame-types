@@ -45,7 +45,7 @@ export interface PluginInfo {
     /**
      * 插件是否禁用
      */
-    disabled: boolean;
+    disabled?: boolean;
     /**
      * 唯一主键
      */
@@ -265,6 +265,10 @@ export interface Identifies {
      */
     openid?: string;
     /**
+     * 唯一用户id
+     */
+    unionid?: string;
+    /**
      * md5(ip + ua)
      */
     ipua?: string;
@@ -365,10 +369,93 @@ export interface Endpoint {
 }
 
 
+export interface LaunchOptions {
+    deeplink?: string;
+    opts?: Record<string, string>;
+    query: Record<string, string>;
+    referrer?: Record<string, any>;
+}
+
+
+export interface LaunchSystem {
+    name: 'Android' | 'IOS' | 'Windows' | 'Linux' | 'Unix' | 'Mac' | 'Harmony' | 'UnknownSYS';
+    alais?: string;
+    version: string;
+    versions?: Record<string, string>;
+    network: 'wifi' | 'mobile' | 'unknown';
+    freq?: '2g' | '2.4g' | '3g' | '4g' | '5g' | '6g' | '7g';
+    ip?: string;
+    ua?: string;
+}
+
+
+export interface LaunchPlatform {
+    /**
+     * 应用平台pf.apk(安卓原生)/pf.ipa(苹果原生)/pf.h5/pf.wx(微信)/pf.alipay(支付宝)等
+     */
+    name: string;
+    /**
+     * 原生应用传原生应用包名,非原生传应用id
+     */
+    pkg: string;
+    /**
+     * 平台别名
+     */
+    alais?: string;
+    /**
+     * 平台模式native(原生)/minigame(小游戏)/webview(浏览器套壳应用)/html(普通html)
+     */
+    mode?: 'native' | 'minigame' | 'webview' | 'html';
+    version?: string;
+    versions?: Record<string, string>;
+}
+
+
+// 启动数据
+export interface LaunchMetadata {
+    /**
+     * 身份识标
+     */
+    ids: Identifies;
+    /**
+     * 平台信息
+     */
+    pf: LaunchPlatform;
+    /**
+     * 系统信息
+     */
+    sys: LaunchSystem;
+    /**
+     * 硬件信息
+     */
+    hdw: Hardware;
+    /**
+     * 启动参数
+     */
+    lau: LaunchOptions;
+    /**
+     * 版本信息(sdk版本/api版本/game版本)
+     */
+    versions: Record<string, string>;
+    /**
+     * 标签
+     */
+    tsg?: string;
+    /**
+     * 其他标签
+     */
+    tags?: Record<string, string>;
+}
+
+
 /**
  * 支付配置
  */
 export interface PaymentInfo {
+    /**
+     * 支付方式 e.g wx.midas(米大师支付)
+     */
+    mode: string;
     /**
      * 支付方式优先级
      */
@@ -392,7 +479,6 @@ export interface PaymentInfo {
 }
 
 
-
 /**
  * 应用信息
  */
@@ -402,13 +488,13 @@ export interface ApplicationInfo {
      */
     id: string;
     /**
-     * 前端公钥
-     */
-    publicKey: string;
-    /**
      * 应用名
      */
     name: string;
+    /**
+     * 前端公钥
+     */
+    key: string;
     /**
      * 平台信息
      */
@@ -430,9 +516,9 @@ export interface ApplicationInfo {
      */
     switch?: Record<string, boolean>
     /**
-     * 支付信息
+     * 可用支付方式(默认屏蔽显示)
      */
-    payments?: Record<string, PaymentInfo>
+    payments?: PaymentInfo[];
     /**
      * 插件配置
      */
