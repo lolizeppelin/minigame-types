@@ -377,8 +377,11 @@ export interface LaunchOptions {
 }
 
 
+export type SystemEnum = 'Android' | 'IOS' | 'Windows' | 'Linux' | 'Unix' | 'Mac' | 'Harmony' | 'UnknownSYS';
+
+
 export interface LaunchSystem {
-    name: 'Android' | 'IOS' | 'Windows' | 'Linux' | 'Unix' | 'Mac' | 'Harmony' | 'UnknownSYS';
+    name: SystemEnum;
     alais?: string;
     version: string;
     versions?: Record<string, string>;
@@ -440,7 +443,7 @@ export interface LaunchMetadata {
     /**
      * 标签
      */
-    tsg?: string;
+    tag?: string;
     /**
      * 其他标签
      */
@@ -527,6 +530,10 @@ export interface ApplicationInfo {
      * 模板列表
      */
     templates?: Template[];
+    /**
+     * 启动元数据
+     */
+    metadata: LaunchMetadata;
     /**
      * 游戏引擎信息
      */
