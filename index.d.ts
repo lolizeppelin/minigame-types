@@ -1019,6 +1019,14 @@ export interface HandlerResults {
 }
 
 /**
+ * 文本检查
+ */
+export interface HandlerTextCheck {
+    (param: { content: string; options?: Record<string, any> }, callback: HandlerResult): void;
+}
+
+
+/**
  * 通用结果处理
  */
 export interface Callback {
