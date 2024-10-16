@@ -358,6 +358,10 @@ export interface Application {
      */
     key: string;
     /**
+     * 其他唯一键值
+     */
+    uniques: Record<string, string>
+    /**
      * 平台信息
      */
     platform: PlatformInfo;
