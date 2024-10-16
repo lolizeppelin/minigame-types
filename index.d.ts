@@ -16,23 +16,6 @@ export interface VersionInfo {
     patch: number;
 }
 
-/**
- * 系统信息
- */
-export interface SystemInfo {
-    /**
-     * 系统名
-     */
-    name: 'android' | 'ios' | 'windows' | 'linux' | 'mac' | 'harmony' | 'unknown'
-    /**
-     * 系统别名
-     */
-    alais: string
-    /**
-     * 系统版本
-     */
-    version: string;
-}
 
 /**
  * 插件信息
@@ -56,73 +39,6 @@ export interface PluginInfo {
     options?: Record<string, any>;
 }
 
-/**
- * 平台信息
- */
-export interface Platform {
-    /**
-     * 平台名
-     */
-    name: string;
-    /**
-     * 平台版本(raw值,用于处理非标准version)
-     */
-    ver: string;
-    /**
-     * 平台版本
-     */
-    version: VersionInfo;
-    /**
-     * 平台语言
-     */
-    language: string;
-    /**
-     * 应用信息
-     */
-    app: {
-        /**
-         * 应用id
-         */
-        id: string;
-        /**
-         * 应用版本
-         */
-        version: string;
-        /**
-         * 应用环境变量
-         */
-        environ: Record<string, string>
-    };
-    /**
-     * 调试状态
-     */
-    debug: boolean
-    /**
-     * 启动信息
-     */
-    launch: {
-        /**
-         * 场景
-         */
-        scene: string;
-        /**
-         * 参数
-         */
-        query: Record<string, string>;
-        /**
-         * 转发源
-         */
-        referrer?: Record<string, any>;
-    }
-    /**
-     * 插件
-     */
-    plugins?: PluginInfo[];
-    /**
-     * 平台额外信息
-     */
-    extension?: Record<string, any>;
-}
 
 /**
  * 应用平台信息
@@ -142,6 +58,7 @@ export interface PlatformInfo {
     options?: Record<string, any>
 }
 
+
 /**
  * 应用渠道信息
  */
@@ -160,66 +77,6 @@ export interface ChannelInfo {
     options?: Record<string, any>
 }
 
-
-/**
- * 固件信息
- */
-export interface Firmware {
-    /**
-     * 设配品牌(华为、oppo、小米)
-     */
-    brand: string; // 设备品牌
-    /**
-     * 机型
-     */
-    model: string;  // 机型
-    /**
-     * 网络信息
-     */
-    network: {
-        type: 'wifi' | 'mobile' | 'unknown';  // 网络类型
-        mode?: '2g' | '2.4g' | '3g' | '4g' | '5g' | '6g' | '7g'  // 信号模式
-    };
-    /**
-     * 系统信息
-     */
-    system: SystemInfo
-    /**
-     * 屏幕信息
-     */
-    screen: {
-        /**
-         * 屏高
-         */
-        height: number;
-        /**
-         * 屏宽
-         */
-        width: number;
-    }
-    /**
-     * 设备id
-     */
-    device?: {
-        /**
-         * 设备号(androidid设备ID， IOS：IDFV)
-         */
-        id?: string;
-        /**
-         * 国际移动设备识别码
-         */
-        imei?: string;
-        /**
-         * uuid 识别码
-         */
-        uuid?: string;
-        /**
-         * 其他唯一id
-         * 设备号Android: Imel>oaid>androidid IOS:IDFA|
-         */
-        unique?: Record<string, string>;
-    };
-}
 
 /**
  * 硬件信息
@@ -242,6 +99,7 @@ export interface Hardware {
     model?: string;
 }
 
+
 /**
  * 广告联盟ID
  */
@@ -255,6 +113,7 @@ export interface CAID {
      */
     version: string;
 }
+
 
 /**
  * Identifies 身份时标
@@ -485,7 +344,7 @@ export interface PaymentInfo {
 /**
  * 应用信息
  */
-export interface ApplicationInfo {
+export interface Application {
     /**
      * 应用id
      */
@@ -559,67 +418,6 @@ export interface ApplicationInfo {
 
 
 /**
- * 应用信息
- */
-export interface AppInfo {
-    /**
-     * 应用ID
-     */
-    id: string;
-    /**
-     * 应用name
-     */
-    name: string;
-    /**
-     * 应用版本
-     */
-    version: string;
-    /**
-     * 应用环境变量
-     */
-    environ: Record<string, string>
-    /**
-     * SDK应用密钥
-     */
-    key?: string;
-    /**
-     * 应用服务
-     */
-    services: Record<string, any>
-    /**
-     * 引用额外信息
-     */
-    extension?: Record<string, any>
-}
-
-
-/**
- * SDK应用信息
- */
-export interface Application {
-    /**
-     * SDK应用信息
-     */
-    sdk: AppInfo;
-    /**
-     * 渠道应用信息
-     */
-    channel: AppInfo;
-    /**
-     * 游戏应用信息
-     */
-    game: AppInfo;
-    /**
-     * 平台信息
-     */
-    platform: Platform;
-    /**
-     * 固件信息
-     */
-    firmware: Firmware;
-}
-
-/**
  * 缓存接口
  */
 export interface CacheStorage {
@@ -651,6 +449,7 @@ export interface CacheStorage {
     SetJson(key: string, value: Record<string, any>): boolean;
 
 }
+
 
 /**
  * 游戏角色信息
@@ -720,6 +519,7 @@ export interface GameRole {
     extension?: Record<string, any>;
 }
 
+
 /**
  * token 信息
  */
@@ -754,6 +554,7 @@ export interface TokenInfo {
      */
     extension?: Record<string, any>;
 }
+
 
 /**
  * 用户信息
@@ -801,6 +602,7 @@ export interface UserInfo {
     extension?: Record<string, any>;
 }
 
+
 /**
  * 全用户信息
  */
@@ -822,6 +624,7 @@ export interface User {
      */
     registered: boolean
 }
+
 
 /**
  * 产品信息
@@ -858,6 +661,7 @@ export interface GameProduct {
     };
 }
 
+
 /**
  * 游戏订单
  */
@@ -887,6 +691,7 @@ export interface GameOrder {
      */
     extension?: Record<string, any>;
 }
+
 
 /**
  * 付款信息
@@ -945,6 +750,7 @@ export interface ShareLink {
     extension?: Record<string, any>;
 }
 
+
 /**
  * 分享通用结构
  */
@@ -958,6 +764,7 @@ export interface SharedInfo {
      */
     callback: HandlerResult;
 }
+
 
 /**
  * 通用结果
@@ -978,6 +785,7 @@ export interface Result {
      */
     payload: any
 }
+
 
 /**
  * 通用批量执行结果
@@ -1004,12 +812,14 @@ export interface Results {
     errors: Result[];
 }
 
+
 /**
  * 处理结果
  */
 export interface HandlerResult {
     (result: Result): void
 }
+
 
 /**
  * 处理批量结果
@@ -1018,11 +828,63 @@ export interface HandlerResults {
     (results: Results): void
 }
 
+
+export interface ExtHandler {
+    (params: any, callback: HandlerResult): void
+}
+
+
+export interface LoginHook {
+    (user: User): void
+}
+
+
 /**
  * 文本检查
  */
 export interface HandlerTextCheck {
     (param: { content: string; options?: Record<string, any> }, callback: HandlerResult): void;
+}
+
+
+/**
+ * token刷新
+ */
+export interface HandlerTokenRefresh {
+    (param: { params: any; user: User }, callback: HandlerResult): void;
+}
+
+
+/**
+ * 获取支付方式
+ */
+export interface HandlerPayMethod {
+    (param: { order: GameOrder, params: Record<string, any>; user: User }, callback: HandlerResult): void;
+}
+
+
+/**
+ * 支付
+ */
+export interface HandlerPay {
+    (param: {
+        /**
+         * 下单
+         */
+        order: GameOrder,
+        /**
+         * 下单参数
+         */
+        params: Record<string, any>;
+        /**
+         * 账号信息
+         */
+        user: User,
+        /**
+         * 支付方式返回参数
+         */
+        payment: any
+    }, callback: HandlerResult): void;
 }
 
 
@@ -1133,7 +995,7 @@ export interface PluginAbleSDK {
     /**
      * 应用
      */
-    app: ApplicationInfo;
+    app: Application;
 
     /**
      * 存储
@@ -1223,6 +1085,7 @@ export interface HttpResponse {
     content: string | Record<string, any>;
 }
 
+
 /**
  * 通用http request handler
  * @param req
@@ -1232,76 +1095,3 @@ export interface HttpResponse {
 export interface HttpRequestHandler {
     (req: HttpRequest, callback: HandlerResult): void
 }
-
-
-/**
- * 微信激励托管
- */
-
-export interface BaseBehaviorOperation {
-    /**
-     * 分享推荐值，必填，当strategy = 0时，填充0
-     */
-    shareValue: number;
-    /**
-     * 激励广告推荐值，必填，当strategy = 0时，填充0
-     */
-    rewardValue: number;
-    /**
-     * ⽤户产生的付费⾦额，只要发生付费，都需要回传，用于优化分享价值预估。选填，该字段要求基础库版本在2.24.7及以上
-     */
-    depositAmount?: number;
-}
-
-/**
- * 点击拉起
- */
-export interface OperationBehaviorClick extends BaseBehaviorOperation {
-    /**
-     * 1-曝光 2-点击 3-关闭 4-操作成功 5-操作失败
-     */
-    operation: 1 | 2 | 3 | 4 | 5;
-    /**
-     * 0-广告 1-分享
-     */
-    currentShow: 0 | 1;
-    /**
-     * 0-业务 1-微信策略
-     */
-    strategy: 0 | 1;
-    /**
-     * 当前点位的adunit
-     */
-    adunit: string;
-    /**
-     * 当前点位的sceneID
-     */
-    sceneID: string;
-}
-
-/**
- * 分享拉起
- */
-export interface OperationBehaviorShare extends BaseBehaviorOperation {
-    /**
-     * 6-分享
-     */
-    operation: 6;
-    /**
-     * 分享人的openid
-     */
-    inviteUser: string;
-    /**
-     * 分享的广告单元
-     */
-    adunit: string;
-    /**
-     * 当前点位的sceneID(开发者自定义）
-     */
-    sceneID: string;
-}
-
-/**
- * 微信激励托管参数
- */
-export type VideoOperation = OperationBehaviorShare | OperationBehaviorClick;
