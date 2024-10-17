@@ -342,6 +342,29 @@ export interface PaymentInfo {
 
 
 /**
+ * 游戏引擎配置,用于注入游戏引擎
+ */
+export interface GameEngine {
+    /**
+     * 引擎名
+     */
+    name: string;
+    /**
+     * 引擎版本
+     */
+    version: string,
+    /**
+     * 引擎模块
+     */
+    module?: any
+    /**
+     * 额外参数
+     */
+    options?: Record<string, any>
+}
+
+
+/**
  * 应用信息
  */
 export interface Application {
@@ -400,24 +423,7 @@ export interface Application {
     /**
      * 游戏引擎信息
      */
-    engine?: {
-        /**
-         * 引擎名
-         */
-        name: string;
-        /**
-         * 引擎版本
-         */
-        version: string,
-        /**
-         * 引擎模块
-         */
-        module?: any
-        /**
-         * 额外参数
-         */
-        options?: Record<string, any>
-    }
+    engine?: GameEngine
 }
 
 
