@@ -984,7 +984,7 @@ export interface Tracker {
      * @param payload
      * @param callback
      */
-    RoleRecharged(payload: { id: string, user: User, order: GameOrder, params: Record<string, any> },
+    RoleRecharged(payload: { id: string, user: User, order: GameOrder, payment: Payment, params: Record<string, any> },
                   callback: HandlerResult): void
 
     /**
