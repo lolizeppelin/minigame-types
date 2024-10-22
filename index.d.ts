@@ -49,6 +49,10 @@ export interface PlatformInfo {
      */
     id: string;
     /**
+     * 平台控制开关
+     */
+    switch?: Record<string, boolean>
+    /**
      * 平台唯一值
      */
     uniques?: Record<string, string>
@@ -67,6 +71,10 @@ export interface ChannelInfo {
      * 渠道识别name
      */
     name: string;
+    /**
+     * 渠道控制开关
+     */
+    switch?: Record<string, boolean>
     /**
      * 渠道唯一值
      */
@@ -1021,6 +1029,11 @@ export interface PluginAbleSDK {
      * 注册Hook
      */
     RegHook(name: string, callback: HandlerResult): void;
+
+    /**
+     * 推送数据
+     */
+    Publish(name: string, result: Result): void;
 }
 
 
