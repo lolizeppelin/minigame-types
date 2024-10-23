@@ -861,7 +861,7 @@ export interface LoginHook {
  * 文本检查
  */
 export interface HandlerTextCheck {
-    (param: { content: string; options?: Record<string, any> }, callback: HandlerResult): void;
+    (param: { content: string; user: User, options?: Record<string, any> }, callback: HandlerResult): void;
 }
 
 
