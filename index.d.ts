@@ -253,13 +253,38 @@ export type SystemEnum = 'Android' | 'IOS' | 'Windows' | 'Linux' | 'Unix' | 'Mac
 
 export interface LaunchSystem {
     name: SystemEnum;
+    /**
+     * 系统别名
+     */
     alais?: string;
+    /**
+     * 系统版本
+     */
     version: string;
+    /**
+     * 其他吧岸本信息
+     */
     versions?: Record<string, string>;
+    /**
+     * 网络类型
+     */
     network: 'wifi' | 'mobile' | 'unknown';
+    /**
+     * 网络速率
+     */
     freq?: '2g' | '2.4g' | '3g' | '4g' | '5g' | '6g' | '7g';
+    /**
+     * ip地址
+     */
     ip?: string;
+    /**
+     * user agent
+     */
     ua?: string;
+    /**
+     * 设备性能等级
+     */
+    benchmark?: number
 }
 
 
