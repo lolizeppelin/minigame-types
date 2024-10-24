@@ -30,6 +30,10 @@ export interface PluginInfo {
      */
     disabled?: boolean;
     /**
+     * 插件控制开关
+     */
+    switch?: Record<string, boolean>
+    /**
      * 唯一主键
      */
     uniques?: Record<string, string>;
