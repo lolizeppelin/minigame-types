@@ -252,6 +252,9 @@ export type SystemEnum = 'Android' | 'IOS' | 'Windows' | 'Linux' | 'Unix' | 'Mac
 
 
 export interface LaunchSystem {
+    /**
+     * 系统名
+     */
     name: SystemEnum;
     /**
      * 系统别名
