@@ -1084,6 +1084,17 @@ export interface Plugin {
      * @param user
      */
     AfterLogin(user: User): void
+
+    /**
+     * 插件同步方法调用
+     */
+    Execute(param?: any): Result
+
+    /**
+     * 插件异步方法调用
+     */
+    Call(params: any, callback: HandlerResult): void
+
 }
 
 
