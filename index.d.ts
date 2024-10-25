@@ -1075,6 +1075,11 @@ export interface PluginAbleSDK {
 export interface Plugin {
 
     /**
+     * 插件名
+     */
+    name: string;
+
+    /**
      * Sdk 初始化后调用
      */
     AfterInitialize(results: Results): void
