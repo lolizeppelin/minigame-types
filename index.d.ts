@@ -783,6 +783,10 @@ export interface ShareLink {
      */
     title: string;
     /**
+     * 分享正文
+     */
+    content?: string;
+    /**
      * 分享路径
      */
     path: string;
