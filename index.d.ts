@@ -340,7 +340,7 @@ declare namespace MiniGameTypes {
     }
 
 
-// 启动数据
+    // 启动数据
     interface LaunchMetadata {
         /**
          * 身份识标
