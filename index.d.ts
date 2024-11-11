@@ -380,7 +380,7 @@ declare namespace MiniGameTypes {
     /**
      * 支付配置
      */
-    interface PaymentInfo {
+    interface Merchant {
         /**
          * 支付方式 e.g wx.midas(米大师支付)
          */
@@ -473,7 +473,7 @@ declare namespace MiniGameTypes {
         /**
          * 可用支付方式(默认屏蔽显示)
          */
-        payments?: PaymentInfo[];
+        merchants?: Merchant[];
         /**
          * 插件配置
          */
