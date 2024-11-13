@@ -193,10 +193,6 @@ declare namespace MiniGameTypes {
          */
         id: string;
         /**
-         * 模板名称
-         */
-        name: string;
-        /**
          * 模板格式
          */
         format: "string" | "html" | "json";
