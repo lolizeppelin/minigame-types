@@ -189,10 +189,6 @@ declare namespace MiniGameTypes {
      */
     interface Template {
         /**
-         * 模板ID
-         */
-        id: string;
-        /**
          * 模板格式
          */
         format: "string" | "html" | "json";
@@ -467,6 +463,10 @@ declare namespace MiniGameTypes {
          */
         switch?: Record<string, boolean>
         /**
+         * 应用模板
+         */
+        templates?: Record<string, Template>;
+        /**
          * 可用支付方式(默认屏蔽显示)
          */
         merchants?: Merchant[];
@@ -474,10 +474,6 @@ declare namespace MiniGameTypes {
          * 插件配置
          */
         plugins?: PluginInfo[];
-        /**
-         * 模板列表
-         */
-        templates?: Template[];
         /**
          * 启动元数据
          */
