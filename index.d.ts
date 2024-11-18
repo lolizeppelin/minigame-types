@@ -989,10 +989,8 @@ declare namespace MiniGameTypes {
          * @param payload
          * @param callback
          */
-        PushEvent(payload: {
-            event: string;
-            params: Record<string, any>,
-        }, callback: HandlerResult): void
+        PushEvent(payload: { event: string; params: Record<string, any> | null | undefined },
+                  callback: HandlerResult): void
 
         /**
          * 用户创建追踪
@@ -1020,7 +1018,7 @@ declare namespace MiniGameTypes {
          * @param payload
          * @param callback
          */
-        UserEvent(payload: { event: string, user: User, params: Record<string, any> },
+        UserEvent(payload: { event: string, user: User, params: Record<string, any> | null | undefined },
                   callback: HandlerResult): void
 
         /**
@@ -1064,7 +1062,12 @@ declare namespace MiniGameTypes {
          * @param payload
          * @param callback
          */
-        RoleEvent(payload: { event: string, user: User, role: GameRole, params: Record<string, any> | null },
+        RoleEvent(payload: {
+                      event: string,
+                      user: User,
+                      role: GameRole,
+                      params: Record<string, any> | null | undefined
+                  },
                   callback: HandlerResult): void
 
     }
