@@ -989,7 +989,7 @@ declare namespace MiniGameTypes {
          * @param payload
          * @param callback
          */
-        PushEvent(payload: { event: string; params: Record<string, any> | null | undefined },
+        PushEvent(payload: { event: string; params?: Record<string, any> | null },
                   callback: HandlerResult): void
 
         /**
@@ -1018,7 +1018,7 @@ declare namespace MiniGameTypes {
          * @param payload
          * @param callback
          */
-        UserEvent(payload: { event: string, user: User, params: Record<string, any> | null | undefined },
+        UserEvent(payload: { event: string, user: User, params?: Record<string, any> | null },
                   callback: HandlerResult): void
 
         /**
@@ -1066,7 +1066,7 @@ declare namespace MiniGameTypes {
                       event: string,
                       user: User,
                       role: GameRole,
-                      params: Record<string, any> | null | undefined
+                      params?: Record<string, any> | null
                   },
                   callback: HandlerResult): void
 
