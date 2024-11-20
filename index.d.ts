@@ -191,7 +191,7 @@ declare namespace MiniGameTypes {
         /**
          * 模板格式
          */
-        format: "string" | "html" | "json";
+        format: "string" | "html" | "json" | "raw";
         /**
          * 正文是否压缩(zip后base64)
          */
