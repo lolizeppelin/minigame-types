@@ -1088,6 +1088,11 @@ declare namespace MiniGameTypes {
         storage: CacheStorage
 
         /**
+         * http请求客户api
+         */
+        request: HttpRequestHandler
+
+        /**
          * 注册追踪器
          */
         RegTracker(name: string, tracker: Tracker): void;
