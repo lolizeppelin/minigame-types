@@ -1,3 +1,5 @@
+import { URIComponent } from "fast-uri"
+
 declare namespace MiniGameTypes {
 
     /**
@@ -916,10 +918,74 @@ declare namespace MiniGameTypes {
 
 
     /**
+     * 弹窗接口
+     */
+    export interface ConfirmDialog {
+        /**
+         * 弹窗可以关闭
+         */
+        close?: boolean;
+        /**
+         * 弹窗标题
+         */
+        title: string;
+        /**
+         *    弹窗正文
+         */
+        content: string;
+        /**
+         * 确认按钮文本
+         */
+        confirm: string;
+        /**
+         * 取消按钮文本
+         */
+        cancel?: string;
+        /**
+         * 外部链接
+         */
+        link?: string;
+        /**
+         * 控制开关
+         */
+        switch?: Record<string, boolean>
+        /**
+         * 额外参数
+         */
+        options?: Record<string, any>
+    }
+
+
+    /**
      * 文本检查
      */
     interface HandlerTextCheck {
-        (param: { content: string; user: User, options?: Record<string, any> }, callback: HandlerResult): void;
+        (param: { content: string; user: User; options?: Record<string, any> }, callback: HandlerResult): void;
+    }
+
+    /**
+     * 图片检查
+     */
+    interface HandlerImageCheck {
+        (param: {
+             uri: URIComponent;
+             user: MiniGameTypes.User;
+             options?: Record<string, any>;
+         }, callback: MiniGameTypes.HandlerResult
+        ): void
+    }
+
+    /**
+     * 媒体(音频、视频等)检查
+     */
+    interface HandlerMediaCheck {
+        (param: {
+             uri: URIComponent;
+             user: MiniGameTypes.User;
+             options?: Record<string, any>;
+         },
+         callback: MiniGameTypes.HandlerResult
+        ): void
     }
 
 
