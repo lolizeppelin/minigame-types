@@ -1,5 +1,8 @@
 declare namespace MiniGameTypes {
 
+    /**
+     * rfc3986  fast-uri.URIComponent
+     */
     interface URIComponent {
         scheme?: string;
         userinfo?: string;
@@ -321,7 +324,9 @@ declare namespace MiniGameTypes {
         benchmark?: number
     }
 
-
+    /**
+     * 平台启动参数
+     */
     interface LaunchPlatform {
         /**
          * 应用平台pf.apk(安卓原生)/pf.ipa(苹果原生)/pf.h5/pf.wx(微信)/pf.alipay(支付宝)等
@@ -869,7 +874,9 @@ declare namespace MiniGameTypes {
          */
         trigger: string;
         /**
-         * 载荷
+         * 载荷,载荷结构由code与trigger决定
+         * 一般情况下,正确返回的载荷是固定的
+         * 错误返回根据错误码与trigger确定载荷结构
          */
         payload: any
     }
@@ -963,6 +970,18 @@ declare namespace MiniGameTypes {
          * 额外参数
          */
         options?: Record<string, any>
+    }
+
+    /**
+     * 确认弹窗
+     */
+    interface HandlerConfirmDialog {
+        (param: {
+            dialog: ConfirmDialog;
+            user?: User;
+            role?: GameRole;
+            options?: Record<string, any>
+        }, callback: HandlerResult): void;
     }
 
 
