@@ -1,6 +1,16 @@
-import { URIComponent } from "fast-uri"
-
 declare namespace MiniGameTypes {
+
+    interface URIComponent {
+        scheme?: string;
+        userinfo?: string;
+        host?: string;
+        port?: number | string;
+        path?: string;
+        query?: string;
+        fragment?: string;
+        reference?: string;
+        error?: string;
+    }
 
     /**
      * 版本信息
