@@ -984,6 +984,17 @@ declare namespace MiniGameTypes {
         }, callback: HandlerResult): void;
     }
 
+    /**
+     * 获取弹窗数据
+     */
+    interface HandlerLoadDialog {
+        (param: {
+            user?: User;
+            role?: GameRole;
+            options?: Record<string, any>
+        }, callback: HandlerResult): void;
+    }
+
 
     /**
      * 文本检查
