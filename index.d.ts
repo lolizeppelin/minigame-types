@@ -646,11 +646,11 @@ declare namespace MiniGameTypes {
 
 
     /**
-     * 用户信息
+     * 用户详情
      */
     interface UserInfo {
         /**
-         * S用户ID
+         * 用户ID
          */
         uid: string;
         /**
@@ -693,19 +693,19 @@ declare namespace MiniGameTypes {
 
 
     /**
-     * 全用户信息
+     * 全部用户(平台、渠道、sdk方)信息
      */
     interface User {
         /**
-         * sdk用户
+         * sdk用户信息
          */
         sdk: UserInfo;
         /**
-         * 平台用户
+         * 平台(微信、抖音、淘宝、支付宝、美团等)用户信息
          */
         platform: UserInfo;
         /**
-         * 渠道用户
+         * 三方渠道用户信息,当没有三方渠道时,三方渠道等于sdk用户
          */
         channel: UserInfo;
         /**
@@ -881,6 +881,21 @@ declare namespace MiniGameTypes {
         payload: any
     }
 
+    /**
+     * 成功登录结果
+     */
+    interface LoginResult {
+        code: 0;
+        /**
+         * 结果触发器
+         */
+        trigger: string;
+        /**
+         * 登录用户
+         */
+        payload: User
+    }
+
 
     /**
      * 通用批量执行结果
@@ -909,11 +924,19 @@ declare namespace MiniGameTypes {
 
 
     /**
-     * 处理结果
+     * 通用回调
      */
     interface HandlerResult {
         (result: Result): void
     }
+
+    /**
+     * 登录回调
+     */
+    interface HandlerLoginResult {
+        (result: Result | LoginResult): void
+    }
+
 
 
     /**
